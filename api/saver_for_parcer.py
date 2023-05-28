@@ -4,7 +4,6 @@
 import time
 import requests
 from api.db_worker import DBworker
-from api.DuckduckGo_parser import DuckDuckGoImageParcer
 
 
 class Save_to_DB_or_FILE:
@@ -72,6 +71,8 @@ class Save_to_DB_or_FILE:
         print(f'Saving completed. Found and saved - {added_links} of the requested {number}.')
 
 if __name__ == '__main__':
+    # from api.DuckduckGo_parser import DuckDuckGoImageParcer   
+    
     # DBworker.create_db(DBworker)
     # DBworker.check_amount_links(DBworker, 1, 'car 4k')
     # DBworker. add_links_to_db(DBworker, 1, 'parcer', "https://stackoverflow.com/questions/16573332/jsondecodeerror-expecting-value-line-1-lur-0", error_links = 0, added_links= 0 )

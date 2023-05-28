@@ -16,7 +16,9 @@ GROUP_CHANNEL = "GROUP_CHANNEL"
 HISTORY_REQUESTS = "HISTORY_REQUESTS"
 TIMESCRIPT = 'TIME_START_SCRIPT'
 SITE = 'SITE'
+
 DATA_BASE = psycopg2  # sqlite3 - SQlite  # for server app
+
 DB_URI = os.environ.get('DB_URI')         # for server app
 
 class DBworker:
