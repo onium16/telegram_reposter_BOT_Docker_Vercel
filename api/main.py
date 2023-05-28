@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from random import randint
-from DuckduckGo_parser import DuckDuckGoImageParcer
-from saver_for_parcer import Save_to_DB_or_FILE
-import db_worker
+from api.DuckduckGo_parser import DuckDuckGoImageParcer
+from api.saver_for_parcer import Save_to_DB_or_FILE
+import api.db_worker as db_worker
 import ast
 
 

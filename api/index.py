@@ -16,10 +16,10 @@ import telebot
 from telebot import types
 from flask import Flask, request, Response, render_template
 
-from DuckduckGo_parser import DuckDuckGoImageParcer
-from main import get_variables
-from db_worker import DBworker
-from saver_for_parcer import Save_to_DB_or_FILE
+from api.DuckduckGo_parser import DuckDuckGoImageParcer
+from api.main import get_variables
+from api.db_worker import DBworker
+from api.saver_for_parcer import Save_to_DB_or_FILE
 # from _config import TOKEN                              # for local app
 
 from apscheduler.schedulers.background import BackgroundScheduler

@@ -3,8 +3,8 @@
 
 import time
 import requests
-from db_worker import DBworker
-from DuckduckGo_parser import DuckDuckGoImageParcer
+from api.db_worker import DBworker
+from api.DuckduckGo_parser import DuckDuckGoImageParcer
 
 
 class Save_to_DB_or_FILE:
