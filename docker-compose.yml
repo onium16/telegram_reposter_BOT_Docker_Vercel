@@ -1,8 +1,8 @@
 version: '3.8'
 services:
   bot:
-    build:
-      context: .
+    build: .
+    image: imageName
     env_file:
       - ./.env
   restart: always
