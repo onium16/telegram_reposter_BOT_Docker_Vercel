@@ -26,7 +26,6 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import datetime
 from datetime import datetime, time
 
-start_time = time.time()                             # time start bot
 
 TOKEN = os.environ.get('TOKEN')                      # for server app 
 
@@ -72,11 +71,6 @@ def webhook():
 def index():
     return render_template("/index.html") 
 
-
-@bot.middleware_handler(update_types=['message'])
-def check_message_time(bot_instance, message):
-    if (time.time() - start_time) <= 5:  # Если прошло менее 5 sec
-        return  # Пропускаем обработку сообщения
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
