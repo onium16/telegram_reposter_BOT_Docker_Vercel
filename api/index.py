@@ -1,10 +1,10 @@
-# import subprocess
+import subprocess
 
-# subprocess.run(["pip", "install", "flask"])
-# subprocess.run(["pip", "install", "requests"])
-# subprocess.run(["pip", "install", "pyTelegramBotAPI"])
-# subprocess.run(["pip", "install", "apscheduler"])
-# subprocess.run(["pip", "install", "psycopg2"])
+subprocess.run(["pip", "install", "flask"])
+subprocess.run(["pip", "install", "requests"])
+subprocess.run(["pip", "install", "pyTelegramBotAPI"])
+subprocess.run(["pip", "install", "apscheduler"])
+subprocess.run(["pip", "install", "psycopg2"])
 
 
 import re
