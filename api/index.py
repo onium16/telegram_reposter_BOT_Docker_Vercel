@@ -291,6 +291,6 @@ def start_parcer_and_saver_links(id_user):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=False,host='0.0.0.0')
 
 
