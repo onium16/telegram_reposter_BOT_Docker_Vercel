@@ -21,7 +21,9 @@ def webhook():
             json_data = request.get_json()
             update = telebot.types.Update.de_json(json_data)
             bot.process_new_updates([update])
-            return ''
+            @bot.message_handler(content_types=['text'])
+            def send_commands_not_supported(message, content_types = []):
+                return bot.send_message(message.chat.id, "Эта команда от бота /help")
         else:
             return Response(status=403)
         
