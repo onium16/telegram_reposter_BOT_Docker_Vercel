@@ -7,9 +7,6 @@ from telebot import types
 
 
 
-
-
-
 TOKEN = os.environ.get('TOKEN')                      # for server app 
 
 bot = telebot.TeleBot(TOKEN)
@@ -27,6 +24,7 @@ def webhook():
             return ''
         else:
             return Response(status=403)
+        
     elif request.method == 'GET':
         return render_template("/webhook.html") 
     else:
@@ -36,9 +34,3 @@ def webhook():
 @app.route('/', methods=['GET'])
 def index():
     return render_template("/index.html") 
-
-
-@bot.message_handler(commands=['start'])
-def send_welcome(message):
-    bot.send_message(message.chat.id, "Эта команда не поддерживается ботом. Узнать список допустимых команд можно используя команду /help")
-
