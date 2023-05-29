@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from random import randint
-from api.DuckduckGo_parser import DuckDuckGoImageParcer
-from api.saver_for_parcer import Save_to_DB_or_FILE
-import api.db_worker as db_worker
+from DuckduckGo_parser import DuckDuckGoImageParcer
+from saver_for_parcer import Save_to_DB_or_FILE
+import db_worker as db_worker
 import ast
 
 
@@ -13,7 +13,6 @@ def get_variables(id_user):
     result_variables = db.check_settings_user(id_user)
     if result_variables != None:
         ID, NUMBER, LIST_FOR_SEARCH, GROUP_CHANNEL, TIMESCRIPT = result_variables
-        
         # data type casting:
         ID = int(ID)
         NUMBER = int(NUMBER)
