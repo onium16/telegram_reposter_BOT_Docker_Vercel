@@ -20,14 +20,14 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['GET', 'POST'])
 def webhook():
     if request.method == 'POST':
-        if request.headers.get('content-type') == 'application/json':
-            json_data = request.get_json()
-            update = telebot.types.Update.de_json(json_data)
-            bot.process_new_updates([update])
-            return ''
-        else:
-            return Response(status=403)
-        
+        # if request.headers.get('content-type') == 'application/json':
+        #     json_data = request.get_json()
+        #     update = telebot.types.Update.de_json(json_data)
+        #     bot.process_new_updates([update])
+        #     return ''
+        # else:
+        #     return Response(status=403)
+        pass
     elif request.method == 'GET':
         return render_template("/webhook.html") 
     else:
