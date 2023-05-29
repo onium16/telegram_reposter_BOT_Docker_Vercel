@@ -34,3 +34,8 @@ def webhook():
 @app.route('/', methods=['GET'])
 def index():
     return render_template("/index.html") 
+
+@bot.message_handler(content_types=['text'])
+def send_commands_not_supported(message, content_types = []):
+    bot.send_message(message.chat.id, "Эта команда не поддерживается ботом. Узнать список допустимых команд можно используя команду /help")
+
