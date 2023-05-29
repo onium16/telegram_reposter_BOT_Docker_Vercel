@@ -3,7 +3,7 @@
 
 import time
 import requests
-from api.db_worker import DBworker
+from db_worker import DBworker
 
 
 class Save_to_DB_or_FILE:
