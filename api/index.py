@@ -1,12 +1,3 @@
-# import subprocess
-
-# subprocess.run(["pip", "install", "flask"])
-# subprocess.run(["pip", "install", "requests"])
-# subprocess.run(["pip", "install", "pyTelegramBotAPI"])
-# subprocess.run(["pip", "install", "apscheduler"])
-# subprocess.run(["pip", "install", "psycopg2"])
-
-
 import re
 import os
 import time as time_pause
@@ -20,11 +11,17 @@ from DuckduckGo_parser import DuckDuckGoImageParcer
 from main import get_variables
 from db_worker import DBworker
 from saver_for_parcer import Save_to_DB_or_FILE
+from start_ngrok import get_public_url
 # from _config import TOKEN                              # for local app
 
 from apscheduler.schedulers.background import BackgroundScheduler
 import datetime
 from datetime import datetime, time
+
+from dotenv import load_dotenv
+
+# Загрузка переменных среды из файла .env
+load_dotenv()
 
 
 TOKEN = os.environ.get('TOKEN')                      # for server app 
@@ -291,6 +288,7 @@ def start_parcer_and_saver_links(id_user):
 
 
 if __name__ == '__main__':
+    get_public_url(token=TOKEN)
     app.run(debug=False,host='0.0.0.0')
 
 

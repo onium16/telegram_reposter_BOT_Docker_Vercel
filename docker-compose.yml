@@ -1,5 +1,37 @@
-version: '3.8'  
+version: '3'
 services:
-  app:
-    build: ./app
-  restart: always
+  telebot:
+    image: onium16/pet_projects
+    container_name: telebot_IR
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '5000:5000'
+    environment:
+      - TOKEN=${TOKEN}
+      - DB_URI=${DB_URI}
+    depends_on:
+      - ngrok
+    command: python /app/api/index.py 
+    env_file:
+      - .env
+
+  ngrok:
+    image: ngrok/ngrok
+    container_name: ngrok_host
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '4040:4040'
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+      - NAME_NGROK_CONTAINER=${NAME_NGROK_CONTAINER}
+    command: http telebot:5000
+  
+
+
+
+    #   command: apt-get install  -y  curl
+
+    # command: apt-get install  -y  curl
+    # command: curl -s http://localhost:4040/api/tunnels

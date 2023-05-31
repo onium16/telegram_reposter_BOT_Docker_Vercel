@@ -7,6 +7,10 @@ import os
 # import sqlite3
 import psycopg2
 # from _config import DB_URI, DATA_BASE       # for local app
+from dotenv import load_dotenv
+# Загрузка переменных среды из файла .env
+load_dotenv()
+
 
 ID = "ID_USER"
 NUMBERS = "NUMBERS_POSTING_IMG"
