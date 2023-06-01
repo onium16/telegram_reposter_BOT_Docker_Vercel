@@ -11,7 +11,6 @@ from DuckduckGo_parser import DuckDuckGoImageParcer
 from main import get_variables
 from db_worker import DBworker
 from saver_for_parcer import Save_to_DB_or_FILE
-from start_ngrok import get_public_url
 # from _config import TOKEN                              # for local app
 
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -288,7 +287,8 @@ def start_parcer_and_saver_links(id_user):
 
 
 if __name__ == '__main__':
-    get_public_url(token=TOKEN)
     app.run(debug=False,host='0.0.0.0')
-
-
+    # while get_public_url(token=TOKEN) == True:
+    #     app.run(debug=False,host='0.0.0.0')
+    # else:
+    #     get_public_url(token=TOKEN)

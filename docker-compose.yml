@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   telebot:
     image: onium16/pet_projects
     container_name: telebot_IR
@@ -27,11 +28,3 @@ services:
       - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
       - NAME_NGROK_CONTAINER=${NAME_NGROK_CONTAINER}
     command: http telebot:5000
-  
-
-
-
-    #   command: apt-get install  -y  curl
-
-    # command: apt-get install  -y  curl
-    # command: curl -s http://localhost:4040/api/tunnels
