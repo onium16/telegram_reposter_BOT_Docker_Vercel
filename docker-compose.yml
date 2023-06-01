@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   telebot:
     image: onium16/pet_projects
     container_name: telebot_IR
@@ -16,7 +15,7 @@ services:
     command: python /app/api/index.py 
     env_file:
       - .env
-
+  
   ngrok:
     image: ngrok/ngrok
     container_name: ngrok_host

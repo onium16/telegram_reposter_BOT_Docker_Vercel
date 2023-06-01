@@ -159,12 +159,7 @@ def process_list_parcer(message):
         if  bool(re.match(r'^([\w\d\s]+(?:,[\w\d\s]+){0,9})$', list_parcer)) == True:
             # Если список введен верно, продолжить обработку
             bot.send_message(message.chat.id, 
-                             f"""User_ID: {message.from_user.id},\n
-                             Название группы: {group_name},\n
-                             "Количество картинок для репостинга: {image_count},\n
-                             Время срабатывания скрипта: {timescript},\n
-                             Ключевые словa/выражения: {list_parcer},\n
-                             """)
+                             f"""User_ID: {message.from_user.id},\nНазвание группы: {group_name},\nКоличество картинок для репостинга: {image_count},\nВремя срабатывания скрипта: {timescript},\nКлючевые словa/выражения: {list_parcer}.""")
 
             bot.send_message(message.chat.id, "Данные сохранены")
             db = DBworker()
@@ -223,7 +218,6 @@ def parse_and_send_messages(message):
         link_for_send_telegram = []
     except:
         bot.send_message(message.chat.id, "Произошла ошибка при отправки ссылки.")
-
         bot.register_next_step_handler(message, parse_and_send_messages)
 
 scheduler = None  # Глобальная переменная для хранения планировщика
@@ -233,20 +227,18 @@ def start_posting_handler(message):
     global scheduler
     TIMESCRIPT = get_variables(message.from_user.id)[-1]
     bot.send_message(message.chat.id, f'Запущена операция постинга. Запланированное время топравки сообщения {TIMESCRIPT}')
-    scheduler = BackgroundScheduler()
-    # Преобразование строки TIMESCRIPT в объект time
-    time_parts = TIMESCRIPT.split(":")
-    time_script = time(int(time_parts[0]), int(time_parts[1]), int(time_parts[2]))
+    scheduler = BackgroundScheduler(timezone='Europe/Warsaw')
 
+    # Преобразование строки TIMESCRIPT в объект time
+    time_script = datetime.strptime(TIMESCRIPT, "%H:%M:%S").time()
     # Установка ежедневного срабатывания с указанным временем начала
-    
-    # scheduler.add_job(parse_and_send_messages, trigger='interval', days=1, start_date=datetime.now().date(), start_time=time_script, args=[GROUP_CHANNEL, link_for_send_telegram])
+    start_time = time_script
+    scheduler.add_job(parse_and_send_messages, trigger='cron', hour=start_time.hour, minute=start_time.minute, second=start_time.second, args=[message])
 
     # test срабатывание каждую минуту
-    scheduler.add_job(parse_and_send_messages, trigger='interval', minutes=2, start_date=datetime.now().date(), args=[message]) 
-
-
+    # scheduler.add_job(parse_and_send_messages, trigger='interval', minutes=2, start_date=datetime.now().date(), args=[message]) 
     scheduler.start()
+
     bot.send_message(message.chat.id, 'Планировщик запущен')
 
 @bot.message_handler(func=lambda message: message.text == text_b_stop_posting)
