@@ -1,3 +1,10 @@
+'''
+The module is responsible for the operation of the telegram bot.
+Based on Flask. Telegrambot receives request parameters from the user. 
+Saves to the database. After that, the user starts reposting by time.
+'''
+
+
 import re
 import os
 import time as time_pause
@@ -280,7 +287,4 @@ def start_parcer_and_saver_links(id_user):
 
 if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0')
-    # while get_public_url(token=TOKEN) == True:
-    #     app.run(debug=False,host='0.0.0.0')
-    # else:
-    #     get_public_url(token=TOKEN)
+

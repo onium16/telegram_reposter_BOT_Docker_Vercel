@@ -9,6 +9,11 @@ import ast
 
 
 def get_variables(id_user):
+    '''
+    The function allows you to get data by the keys 
+    ID, NUMBER, LIST_FOR_SEARCH, GROUP_CHANNEL, TIMESCRIPT 
+    from the current database.
+    '''
     db=db_worker.DBworker()
     result_variables = db.check_settings_user(id_user)
     if result_variables != None:
@@ -35,8 +40,12 @@ class RequestData():  # random keyword from LIST_FOR_SEARCH param
 if __name__ == '__main__':
 
     def main_to_save_new_links(id_user):
+        '''
+        Test function!!! allows you to get data by the keys 
+        ID, NUMBER, LIST_FOR_SEARCH, GROUP_CHANNEL, TIMESCRIPT 
+        from the current database.
+        '''
         ID, NUMBER, LIST_FOR_SEARCH, GROUP_CHANNEL, TIMESCRIPT = get_variables(id_user)
-       
         print(
                 'ID: ', ID, 
                 'NUMBER: ', NUMBER, 
