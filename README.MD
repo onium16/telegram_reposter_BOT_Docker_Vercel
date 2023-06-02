@@ -19,9 +19,3 @@ Telegram bot reposts images to a user-specified group.
 >> author: SeriouS 
 >
 >> email: onium16@gmail.com
-
-
-
-Work details:
-Telegram bot accepts a task from the user: group name, list of keywords for image search, response time, number of images.
-The work is done using the database currently configured by Postgres.
